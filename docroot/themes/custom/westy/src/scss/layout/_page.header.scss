@@ -6,7 +6,16 @@
 header.page__header {
   @extend .border-bottom, .border-dark, .border-4;
   border-bottom-color: map_get($theme-colors, "dark-gray") !important;
-  min-height: 7.15rem;
+
+  @include media-breakpoint-up(lg) {
+    min-height: 7.15rem;
+  }
+
+  .container {
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+    }
+  }
 
   // Alerts
   .alert-item {
@@ -33,6 +42,20 @@ header.page__header {
 
   // The logo & branding section.
   .block--westy-site-branding {
+    @include media-breakpoint-down(sm) {
+      padding-left: var(--bs-gutter-x, 0.75rem);
+    }
+
+    padding: 1rem 0;
+
+    me-auto {
+      padding: 1.5rem 0 !important;
+    }
+    h1 {
+      @include media-breakpoint-down(lg) {
+        @include visually-hidden;
+      }
+    }
     h1 a {
       font-size: $h2-font-size;
       text-align: left;
@@ -51,6 +74,10 @@ header.page__header {
       }
     }
     img {
+      @include media-breakpoint-down(lg) {
+        width: 77.25px;
+      }
+
       margin-right: 0.813rem;
     }
   }
@@ -58,8 +85,23 @@ header.page__header {
   // Main site navigation.
 
   .navbar {
-    align-items: flex-end;
+    @include media-breakpoint-up(lg) {
+      align-items: flex-end;
+    }
+
+    .navbar-toggler {
+      @include media-breakpoint-down(sm) {
+        margin-right: var(--bs-gutter-x, 0.75rem);
+      }
+    }
+
     padding: 0;
+
+    .navbar-nav {
+      @include media-breakpoint-down(sm) {
+        background-color: map_get($theme-colors, "dark-gray") !important;
+      }
+    }
   }
 
   .navbar-collapse {
@@ -71,13 +113,26 @@ header.page__header {
 
     // Top-level menu links.
     a.nav-link {
-      font-size: $h4-font-size;
-      font-weight: 600;
-      padding: 1.5rem 0.5rem;
-      margin-left: 1rem;
+      color: #fff;
+      font-size: $h5-font-size;
+      padding: 1rem 0.75rem;
 
-      @include media-breakpoint-up(lg) {
+      @include media-breakpoint-up(sm) {
         color: map_get($theme-colors, "dark-gray");
+        font-size: $h4-font-size;
+        font-weight: 600;
+        margin-left: 1rem;
+        padding: 1.5rem 0.5rem;
+      }
+
+      @include media-breakpoint-down(sm) {
+        color: #fff;
+
+        &:hover,
+        &:active {
+          color: #fff;
+          text-decoration: none;
+        }
       }
 
       &:hover,
@@ -90,6 +145,7 @@ header.page__header {
       }
 
       &.show {
+        color: map_get($theme-colors, "dark-gray");
         background-color: map_get($theme-colors, "faded-gray");
       }
 
@@ -121,20 +177,26 @@ header.page__header {
       }
     }
 
+    .nav-item {
+      @include media-breakpoint-between(sm, lg) {
+        border-bottom: 1px solid map_get($theme-colors, "dark-gray");
+      }
+    }
+
     // Menu flyouts.
     .dropdown-menu {
       @extend .border-0, .rounded-0, .p-3, .mb-2, .bg-dark-gray, .text-white;
-      min-width: 400px;
       padding: 2rem !important;
 
       @include media-breakpoint-up(lg) {
         background-color: map_get($theme-colors, "dark-gray") !important;
-      }
+        min-width: 400px;
 
-      &.show {
-        display: grid;
-        grid-template-rows: repeat(10, min-content);
-        grid-auto-flow: column;
+        &.show {
+          display: grid;
+          grid-template-rows: repeat(10, min-content);
+          grid-auto-flow: column;
+        }
       }
 
       a {
