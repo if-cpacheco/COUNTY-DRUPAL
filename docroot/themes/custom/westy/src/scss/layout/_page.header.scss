@@ -43,7 +43,7 @@ header.page__header {
   // The logo & branding section.
   .block--westy-site-branding {
     @include media-breakpoint-down(sm) {
-      padding-left: var(--bs-gutter-x, 0.75rem);
+      padding-left: var(--bs-gutter-x, 0.5rem);
     }
 
     padding: 1rem 0;
@@ -51,11 +51,7 @@ header.page__header {
     me-auto {
       padding: 1.5rem 0 !important;
     }
-    h1 {
-      @include media-breakpoint-down(lg) {
-        @include visually-hidden;
-      }
-    }
+
     h1 a {
       font-size: $h2-font-size;
       text-align: left;
@@ -71,6 +67,10 @@ header.page__header {
         @extend .link-dark-gray;
         display: block;
         font-weight: normal;
+      }
+
+      @include media-breakpoint-down(sm) {
+        font-size: $h4-font-size;
       }
     }
     img {
@@ -91,7 +91,7 @@ header.page__header {
 
     .navbar-toggler {
       @include media-breakpoint-down(sm) {
-        margin-right: var(--bs-gutter-x, 0.75rem);
+        margin-right: var(--bs-gutter-x, 0.5rem);
       }
     }
 
