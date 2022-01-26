@@ -177,6 +177,25 @@ header.page__header {
   }
 }
 
+.node-type--group {
+  header.page__header {
+    .block--westy-site-branding {
+      h1 {
+        font-weight: normal;
+
+        a {
+          @extend .link-dark-gray;
+
+          span {
+            color: $link-color;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
 // Main: Header; with site Drupal and messages.
 // -----------------------------------------------------------------------------
 main header.page__sub_header {
